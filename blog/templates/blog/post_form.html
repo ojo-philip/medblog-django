@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+  <!-- New Post -->
+    <article class="new-post">
+      <div class="post-heading">
+        <h2 class="new-post-heading">create a new post</h2>
+        <div class="underline"></div>
+      </div>
+      <form action="." method="POST" enctype='multipart/form-data'>
+      {% csrf_token %}
+        {{ form.as_p }}
+      <button type="submit" class="btn-green">create</button>
+      </form>
+    </article>
+    <!-- end of new post -->
+{% endblock content %}

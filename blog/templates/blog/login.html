@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+  <!-- New Post -->
+    <article class="new-post">
+      <div class="post-heading">
+        <h2 class="new-post-heading">login here</h2>
+        <div class="underline"></div>
+      </div>
+      <form  method="POST">{% csrf_token %}
+        {{ form.as_p }}
+      <button type="submit" class="btn-green">Sign In</button><span class="new-post-heading ml-4">Forgot Password? <a href="{% url 'reset_password' %}" >Reset password</a> </span>
+      <p class="new-post-heading">You Don't have an account? <a href="{% url 'userprofile:user_registration' %}" class="btn-blue">Sign Up</a></p>      
+      </form>
+    </article>
+    <!-- end of new post -->
+{% endblock content %}

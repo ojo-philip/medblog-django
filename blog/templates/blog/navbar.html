@@ -1,0 +1,40 @@
+<nav class="navbarnav" id="navbar">
+      <div class="navbar-top">
+        <div class="brand-name"><a href="{% url 'blog:home_page' %}"><i class="fas fa-user-md"></i></a></div>
+        <div class="nav-btn"><i class="fas fa-bars"></i></div>
+      </div>
+      <div class="links-container">
+        <div class="navbar-item">
+          <ul class="links">
+            <div class="left">
+              <li class="link-item"><a href="{% url 'blog:home_page' %}" class="">Home</a></li>
+              <li class="link-item"><a href="{% url 'blog:about_page' %}" class="">About</a></li>
+              <li class="link-item"><a href="{% url 'blog:user_post_list' %}" class="">{{ request.user }}</a></li>
+            </div>
+            <div class="right">
+            {% if user.is_authenticated %}
+              <li class="link-item"><a href="{% url 'userprofile:user_profile' %}" class="">Profile</a></li>
+              <li class="link-item"><a href="{% url 'blog:post_create' %}" class="">New Post</a></li>
+              <li class="link-item"><a href="{% url 'blog:logout_page' %}" class="">Logout</a></li>
+              {% else %}
+              <li class="link-item"><a href="{% url 'blog:login_page' %}" class="">Login</a></li>
+              <li class="link-item"><a href="{% url 'userprofile:user_registration' %}" class="">Register</a></li>
+              {% endif %}
+            </div>
+          </ul>
+          <div class="nav-form">
+            <form action="{% url 'search_query' %}" class="form" method="GET">
+              <input type="search" class="control" placeholder="Search" name='q' values='{{ request.GET.q }}'/>
+              <button class="search-btn">search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- scroll-top -->
+    <div class="scroll-top">
+      <span
+        ><a href="#"><i class="fas fa-arrow-up"></i></a
+      ></span>
+    </div>
+    <!-- endscroll-top -->

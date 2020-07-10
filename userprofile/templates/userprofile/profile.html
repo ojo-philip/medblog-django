@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<!-- post card -->
+      <!-- profile -->
+    <article class="profile">
+      <div class="profile-img-container">
+        <img src="{{ user.userprofile.image.url }}" />
+      </div>
+      <div class="profile-info">
+        <h4>{{user.username}}</h4>
+        <h4 class="email"><span class='text-capitalize'>Email: </span> {{ user.email }}</h4>
+        <h4>First Name: {{user.userprofile.first_name}}</h4>
+        <h4>Last Name:{{user.userprofile.last_name}}</h4>
+        <p>About You{{user.userprofile.about_you}}</p>
+      </div>
+    </article>
+    <!-- endprofile -->
+      <article class="new-post">
+      <div class="post-heading">
+        <h2 class="new-post-heading">Update your profile</h2>
+        <div class="underline"></div>
+      </div>
+      <form  method="POST" enctype='multipart/form-data'>
+      {% csrf_token %}
+        {{ u_form.as_p }}
+        {{ p_form.as_p }}
+      <button type="submit" class="btn-blue">Update</button> 
+      </form>
+    </article>
+      <!-- end single post -->
+      {% endblock content %}

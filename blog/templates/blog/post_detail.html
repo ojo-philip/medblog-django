@@ -1,0 +1,74 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<!-- post card -->
+    <div class="row">
+    <div class="col-md-8 w-75 mx-auto">
+    
+      <!-- single post -->
+      <article class="flex-item">
+        <div class="post-card">
+        {% if post.image %}
+          <div class="post-img-container">
+            <img src="{{ post.image.url }}" alt="" />
+          </div>
+          {% endif %}
+          <div class="post-content">
+            <a href="{{ post.get_absolute_url }} "><h2 class="post-title">{{post.title}}</h2></a>
+            <p class="post-text">
+              {{ post.content|linebreaks }}
+            </p>
+            <p class="post-date">posted by <a href="{% url 'blog:users_post_list' post.user.username %}"><strong><img class="article-img" src="{{ post.user.userprofile.image.url }}" />{{ post.user.username }}</strong></a> on {{ post.date_posted|date:'F d, Y' }}</p>
+            <p  class="post-date font-italic"><a href="{{ post.get_absolute_url }}"> <strong>{{ post.comments.count }}</strong> comment<span class='text-lowercase'>(s)</span></a></p>
+          </div>
+          {% if request.user == post.user %}
+          <div class="comment-icon">
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="{{ post.get_edit_url }}" class="btn-blue" >update</a>
+            <a href="{{ post.get_delete_url }}" class="btn-red">delete</a>
+            <a href="{{ post.get_comment_url }}"><i class="far fa-comment"></i></a>
+          </div>
+          {% else %}
+           <div class="comment-icon">
+            <a href="{{ post.get_comment_url }}"><i class="far fa-comment"></i></a>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </article>
+      </div>
+      </div>
+      <div class="row">
+    <div class="col-md-8 w-75 mx-auto">
+    
+      <!-- single comment -->
+            <h2 class="post-title">Comment<span class='text-lowercase'>(s)</span></h2>
+
+      {% for comment in post.comments.all %}
+      <article class="flex-item">
+        <div class="post-card">
+          <div class="post-content">
+            <p class="post-title">{{comment.content}}</p>
+            <p class="post-date">posted by <a href="{% url 'blog:users_post_list' post.user.username %}"><strong><img class="article-img" src="{{ comment.user.userprofile.image.url }}" />{{ comment.user.username }}</strong></a> on {{ comment.date_posted|date:'F d, Y' }}</p>
+          </div>
+           {% comment %} <div class="comment-icon">
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="{{ post.get_edit_url }}" class="btn-blue" >update</a>
+            <a href="{{ post.get_delete_url }}" class="btn-red">delete</a>
+          </div>
+          </div> {% endcomment %}
+        </div>
+      </article>
+      {% empty %}
+      <article class="flex-item">
+        <div class="post-card">
+          <div class="post-content">
+            <p class="post-title">There is no comment</p>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+      </div>
+      </div>
+      <!-- end single comment -->
+      {% endblock content %}

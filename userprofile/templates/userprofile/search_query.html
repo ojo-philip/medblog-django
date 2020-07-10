@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+  <!-- New Post -->
+    <article class="new-post">
+    {% if query %}
+      <div class="post-heading ">
+        <h2 class="new-post-heading">You searched for {{ query }}</h2>
+        <div class="underline"></div>
+      </div>
+      {% else %}
+            <form action="{% url 'search_query' %}" class="form d-flex" method="GET">
+              <input type="search" class="control" placeholder="Search" name='q'/>
+              <button class="search-btn">search</button>
+            </form>
+      {% endif %}
+      {% for post in blog_list %}
+       <!-- single post -->
+      <article class="flex-item">
+        <div class="post-card">
+        {% if post.image %}
+          <div class="post-img-container">
+            <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt="" /></a>
+          </div>
+           {% endif %}
+          <div class="post-content">
+            <a href="{{ post.get_absolute_url }} "><h2 class="post-title">{{post.title}}</h2></a>
+            <p class="post-text">
+              {{ post.content|truncatewords:30 }}
+            </p>
+            <p class="post-date">posted by <a href="{% url 'blog:users_post_list' post.user.username %}"><strong>
+        <img class="article-img" src="{{ post.user.userprofile.image.url }}" />{{ post.user }}</strong></a> on {{ post.date_posted|date:'F d, Y' }}</p>
+        <p  class="post-date font-italic"><a href="{{ post.get_absolute_url }}"> <strong>{{ post.comments.count }}</strong> comment(s)</a></p>
+          </div>
+          <div class="comment-icon">
+            <a href="{{ post.get_comment_url }}"><i class="far fa-comment"></i></a>
+          </div>
+       
+          
+        </div>
+      </article>
+    {% endfor %}
+
+      </div>
+    </article>
+    <!-- end of new post -->
+{% endblock content %}

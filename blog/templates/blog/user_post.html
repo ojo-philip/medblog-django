@@ -1,0 +1,61 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<!-- post card -->
+    <div class="section-center">
+    {% for post in posts %}
+    
+      <!-- single post -->
+      <article class="flex-item">
+        <div class="post-card">
+        {% if post.image %}
+          <div class="post-img-container">
+            <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt="" /></a>
+          </div>
+           {% endif %}
+          <div class="post-content">
+            <a href="{{ post.get_absolute_url }} "><h2 class="post-title">{{post.title}}</h2></a>
+            <p class="post-text">
+              {{ post.content|truncatewords:30 }}
+            </p>
+            <p class="post-date">posted by  <a href="{% url 'blog:users_post_list' post.user.username %}"><strong> <img class="article-img" src="{{ post.user.userprofile.image.url }}" />{{ post.user.username }}</strong></a> on {{ post.date_posted|date:'F d, Y' }}</p>
+            <p  class="post-date font-italic"><a href="{{ post.get_absolute_url }}"> <strong>{{ post.comments.count }}</strong> comment<span class='text-lowercase'>(s)</span></a></p>
+          </div>
+          <div class="comment-icon">
+            <a href="{{ post.get_comment_url }}"><i class="far fa-comment"></i></a>
+          </div>
+       
+          
+        </div>
+      </article>
+    {% endfor %}
+
+      </div>
+<!-- pagination -->
+    {% if is_paginated %}
+    <div class="pagination-container">
+      <ul class="pagination">
+           {% if page_obj.has_previous %}
+
+        <li class="pagination-item">
+          <a href="?page={{ page_obj.previous_page_number }}" class="btn-blue">prev</a>
+        </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+       {% if page_obj.number == i %}
+        <li class="pagination-item">
+          <a href="?page={{ i }}" class="btn-blue active">{{ i }}</a>
+        </li>
+        {% else %}
+        <li class="pagination-item"><a href="?page={{ i }}" class="btn-blue">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="pagination-item"><a href="?page={{ page_obj.next_page_number }}" class="btn-blue">next</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+    <!-- end pagination -->
+      <!-- end single post -->
+      {% endblock content %}

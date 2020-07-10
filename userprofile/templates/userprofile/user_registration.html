@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+  <!-- New Post -->
+    <article class="new-post">
+      <div class="post-heading">
+        <h2 class="new-post-heading">create an account</h2>
+        <div class="underline"></div>
+      </div>
+      <form  method="POST">
+      {% csrf_token %}
+        {{ form.as_p }}
+      <button type="submit" class="btn-green">Register</button>
+      <p class="new-post-heading">You already have an account? <a href="{% url 'blog:login_page' %}" class="btn-blue">Sign In</a></p> 
+      </form>
+    </article>
+    <!-- end of new post -->
+{% endblock content %}
