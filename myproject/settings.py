@@ -127,8 +127,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
-MEDIA_URL = '/media/'
+MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_ROOT = MEDIA_URL
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -146,6 +146,8 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+S3DIRECT_REGION = 'us-east-2'
+AWS_QUERYSTRING_AUTH = True
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
