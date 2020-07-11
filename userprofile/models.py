@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-# from PIL import Image
+from PIL import Image
 
 User = settings.AUTH_USER_MODEL
 
