@@ -17,6 +17,7 @@
             <a href="{{ post.get_absolute_url }} "><h2 class="post-title">{{post.title}}</h2></a>
             <p class="post-text">
               {{ post.content|linebreaks|truncatewords:30}}
+              <a href="{{ post.get_absolute_url }} "><span class='ml-3 post-title font-italic'>load more</span></a>
             </p>
             <p class="post-date">posted by <a href="{% url 'blog:users_post_list' post.user.username %}"><strong>
         <img class="article-img" src="{{ post.user.userprofile.image.url }}" />{{ post.user }}</strong></a> on {{ post.date_posted|date:'F d, Y' }}</p>
