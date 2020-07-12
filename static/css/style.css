@@ -48,7 +48,7 @@
 
 body {
   font-family: var(--ff-primary);
-  line-height: 1.3;
+  line-height: 1.2;
   background: var(--clr-grey-8);
 }
 
@@ -95,9 +95,9 @@ a {
 }
 
 .link-item {
-  padding: 0.5rem 2rem;
+  padding: 0.3rem 2rem;
   text-transform: capitalize;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   transition: var(--transition);
 }
 
@@ -112,11 +112,11 @@ a {
 
 .link-item:hover {
   background: var(--clr-primary-1);
-  padding: 0.5rem 3rem;
+  padding: 0.3rem 3rem;
 }
 
 .nav-form {
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 
 .control,
@@ -125,12 +125,12 @@ a {
   border: 2px solid var(--clr-primary-2);
   border-radius: var(--radius);
   padding: 0.4rem 0 0.4rem 2.5rem;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   background: transparent;
 }
 
 .search-btn {
-  padding: 0.4rem 0.7rem;
+  padding: 0.4rem;
 }
 
 .control {
@@ -150,7 +150,7 @@ a {
 .control::placeholder {
   text-transform: capitalize;
   color: var(--clr-primary-2);
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .search-btn {
@@ -171,7 +171,7 @@ a {
 }
 
 .scroll-top {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 2rem;
   position: fixed;
   right: 0%;
@@ -288,19 +288,22 @@ a {
   text-align: right;
   text-transform: capitalize;
   color: var(--clr-primary-2);
+  font-size: 0.8rem;
+
 }
 
 .post-text {
   width: 90%;
   margin: 0 auto;
   padding: 1rem 0;
+  font-size: 0.9rem;
 }
 
 .comment-icon {
   border-top: 2px solid var(--clr-primary-2);
   padding: 1rem 2rem;
   text-align: right;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .comment-icon a {
@@ -357,7 +360,7 @@ a {
 
 .profile-info h4 {
   text-transform: capitalize;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   color: var(--clr-primary-2);
 }
 
@@ -365,9 +368,7 @@ a {
   text-transform: lowercase;
 }
 
-.profile-info p {
-  width: 75vw;
-  margin: 0 auto;
+.profile-info {
   text-align: left;
   padding: 1rem;
   color: var(--clr-primary-2);
@@ -407,12 +408,12 @@ a {
   border-bottom: 2px solid var(--clr-primary-2);
   padding: 0rem 0.6rem;
   background: transparent;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 label {
   text-transform: capitalize;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: var(--clr-primary-2);
   display: inline-block;
   padding: 1rem 0;
@@ -432,7 +433,7 @@ label {
   border: 2px solid var(--clr-green-dark);
   border-radius: var(--radius);
   background: transparent;
-  font-size: 1.3rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: var(--transition);
 }
@@ -519,7 +520,7 @@ label {
 .footer-icon {
   border: 2px solid var(--clr-primary-1);
   border-radius: 50%;
-  font-size: 2rem;
+  font-size: 1.7rem;
   padding: 0.3rem;
   transition: var(--transition);
 }
@@ -550,7 +551,7 @@ label {
 
 .footer-link-item {
   padding: 0.4rem 0;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-transform: capitalize;
 }
 

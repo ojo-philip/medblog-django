@@ -14,7 +14,7 @@
           </div>
           {% endif %}
           <div class="post-content">
-            <a href="{{ post.get_absolute_url }} "><h2 class="post-title">{{post.title}}</h2></a>
+            <a href="{{ post.get_absolute_url }} "><h4 class="post-title">{{post.title}}</h4></a>
             <p class="post-text">
               {{ post.content|linebreaks }}
             </p>
@@ -48,7 +48,7 @@
       <article class="flex-item">
         <div class="post-card">
           <div class="post-content">
-            <p class="post-title">{{comment.content}}</p>
+            <p class="post-text">{{comment.content}}</p>
             <p class="post-date">posted by <a href="{% url 'blog:users_post_list' post.user.username %}"><strong><img class="article-img" src="{{ comment.user.userprofile.image.url }}" />{{ comment.user.username }}</strong></a> on {{ comment.date_posted|date:'F d, Y' }}</p>
           </div>
            {% comment %} <div class="comment-icon">
